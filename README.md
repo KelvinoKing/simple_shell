@@ -1,5 +1,5 @@
 # SIMPLE_SHELL PROJECT
 
-##Contributors
+## Contributors
 - **Kelvino Gachihi** 
 - **Fardosa Hassan**     
