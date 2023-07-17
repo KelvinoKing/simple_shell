@@ -30,6 +30,7 @@ int _strlen(char *s)
 int checkForPipes(char *str, char **argv)
 {
 	int i = 0;
+
 	argv[i] = strtok(str, " ");
 	while (argv[i] != NULL)
 	{

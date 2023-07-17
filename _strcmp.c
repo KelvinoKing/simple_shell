@@ -17,10 +17,11 @@ int _strcmp(char *s1, char *s2)
 	if (count1 < count2)
 	{
 		int temp = count1;
+
 		count1 = count2;
 		count2 = temp;
+
 	}
-	
 	for (i = 0; i < count1; i++)
 		if (s1[i] > s2[i])
 		{

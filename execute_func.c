@@ -11,12 +11,13 @@
 void execute_func(char **argcmd, char **argv)
 {
 	pid_t child_pid;
+
 	child_pid = fork();
 
 	if (child_pid == -1)
 	{
 		perror(argv[0]);
-		return;
+		return (0);
 	}
 
 	if (child_pid == 0)
@@ -25,14 +26,12 @@ void execute_func(char **argcmd, char **argv)
 		{
 			perror(argv[0]);
 			exit(0);
-		}
-		
+		}	
 	}
 	else
 	{
 		wait(NULL);
-		return;
 	}
 
-	return;
+	return (0);
 }

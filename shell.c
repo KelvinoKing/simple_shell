@@ -4,7 +4,7 @@
  * main - Entry point for program
  * @argc: number of arguments
  * @argv: argument vector
- * @environ: enviroments
+ * @env: enviroments
  *
  * Return: int
  */
@@ -22,7 +22,6 @@ int main(__attribute__((unused)) int argc, char **argv, __attribute__((unused)) 
 		continue;
 
 	i = checkForPipes(cmdString, args);
-
 	if (i == 1)
 		{
 			execute_func(args, argv);

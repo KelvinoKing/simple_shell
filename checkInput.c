@@ -23,7 +23,7 @@ void _strcpy(char *dest, char *src)
  * checkInput - Accepts user input
  * @inputCmd: user command
  *
- * return: int
+ * Return: int
  */
 int checkInput(char *inputCmd)
 {
@@ -42,7 +42,7 @@ int checkInput(char *inputCmd)
 		free(buffer);
 		return (1);
 	}
-	buffer [strcspn(buffer, "\n")] = '\0';
+	buffer[strcspn(buffer, "\n")] = '\0';
 	if (buffer[0] != '\0')
 	{
 		_strcpy(inputCmd, buffer);
