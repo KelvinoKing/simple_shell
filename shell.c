@@ -8,21 +8,27 @@
  *
  * Return: int
  */
-int main(__attribute__((unused)) int argc, char **argv, __attribute__((unused)) char **env)
+int main(__attribute__((unused)) int argc, char **argv,  char **env)
 {
 	char cmdString[1024];
-	char *args[50];
+	char *args[100];
 	int i;
 
 	while (1)
 	{
 		callDir();
-
 	if (checkInput(cmdString))
 		continue;
 
+	if (_strcmp(cmdString, "exit") == 0)
+	{
+		free(cmdString);
+		print_env(env);
+		continue;
+	}
+
 	i = checkForPipes(cmdString, args);
-	if (i == 1)
+		if (i == 1)
 		{
 			execute_func(args, argv);
 		}
