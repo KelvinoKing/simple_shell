@@ -27,7 +27,7 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 	}
 	if (_strcmp(cmdString, "env") == 0)
 	{
-		get_env(*env);
+		print_env(env);
 		continue;
 	}
 
