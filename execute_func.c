@@ -4,16 +4,19 @@
  * execute_func - executes functions
  * @argcmd: pointer to pointer array containing commands
  * @argv: array of arguments
- * @environ: all enviroment array
  *
- * Return: void
+ * Return: 0
  */
 void execute_func(char **argcmd, char **argv)
 {
 	pid_t child_pid;
+	char *cmd = NULL, *old_cmd = NULL;
 
+	cmd = argcmd[o];
+	old_cmd = get_path(cmd);
+	if (old_cmd)
+	{
 	child_pid = fork();
-
 	if (child_pid == -1)
 	{
 		perror(argv[0]);
@@ -26,7 +29,11 @@ void execute_func(char **argcmd, char **argv)
 		{
 			perror(argv[0]);
 			exit(0);
-		}	
+		}
+
+		free(old_cmd);
+		}
+
 	}
 	else
 	{
