@@ -5,7 +5,7 @@
  * @argcmd: pointer to pointer array containing commands
  * @argv: array of arguments
  *
- * Return: 0
+ * Return: void
  */
 
 void execute_func(char **argcmd, char **argv)
@@ -21,14 +21,14 @@ void execute_func(char **argcmd, char **argv)
 	if (child_pid == -1)
 	{
 		perror(argv[0]);
-		return (0);
+		return;
 	}
 
 	if (child_pid == 0)
 	{
-		char *environ[] = {NULL};
+		char **environ = __environ;
 
-		if (execve(old_cmd, argcmd) == -1)
+		if (execve(old_cmd, argcmd, environ) == -1)
 		{
 			perror(argv[0]);
 			exit(0);
@@ -41,7 +41,7 @@ void execute_func(char **argcmd, char **argv)
 	else
 	{
 		wait(NULL);
-		return (0);
+		return;
 	}
-		return (0);
+		return;
 }

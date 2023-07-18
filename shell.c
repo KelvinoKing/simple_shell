@@ -23,13 +23,11 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 
 	if (_strcmp(cmdString, "exit") == 0)
 	{
-		free(cmdString);
 		exit(0);
 	}
 	if (_strcmp(cmdString, "env") == 0)
 	{
-		free(cmdString);
-		print_env(env);
+		get_env(*env);
 		continue;
 	}
 

@@ -1,9 +1,7 @@
 #include "shell.h"
-
 /**
  * get_path - gets the path of the command
  * @cmd: command passed
- *
  * Return: pointer to path
  */
 char *get_path(char *cmd)
@@ -19,7 +17,7 @@ char *get_path(char *cmd)
 		path_copy = _strdup(path);
 		cmd_len = _strlen(cmd);
 		token = strtok(path_copy, ":");
-		while (token != NULL);
+		while (token != NULL)
 		{
 			dir_len = _strlen(cmd);
 			file_path = malloc(sizeof(char) * (cmd_len + dir_len + 3));
@@ -49,9 +47,7 @@ char *get_path(char *cmd)
 	{
 		return (cmd);
 	}
-	
 		return (NULL);
 	}
-
 	return (NULL);
 }

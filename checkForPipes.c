@@ -39,5 +39,3 @@ int checkForPipes(char *str, char **argv)
 	}
 	return (1);
 }
-
-
