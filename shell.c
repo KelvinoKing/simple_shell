@@ -17,10 +17,16 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 	while (1)
 	{
 		callDir();
+
 	if (checkInput(cmdString))
 		continue;
 
 	if (_strcmp(cmdString, "exit") == 0)
+	{
+		free(cmdString);
+		exit(0);
+	}
+	if (_strcmp(cmdString, "env") == 0)
 	{
 		free(cmdString);
 		print_env(env);

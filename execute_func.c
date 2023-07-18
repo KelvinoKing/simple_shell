@@ -7,12 +7,15 @@
  *
  * Return: 0
  */
+
 void execute_func(char **argcmd, char **argv)
 {
 	pid_t child_pid;
 	char *cmd = NULL, *old_cmd = NULL;
 
-	cmd = argcmd[o];
+	extern char **environ;
+
+	cmd = argcmd[0];
 	old_cmd = get_path(cmd);
 	if (old_cmd)
 	{
@@ -25,20 +28,21 @@ void execute_func(char **argcmd, char **argv)
 
 	if (child_pid == 0)
 	{
-		if (execve(argcmd[0], argcmd, NULL) == -1)
+		if (execve(old_cmd, argcmd, environ) == -1)
 		{
 			perror(argv[0]);
 			exit(0);
 		}
 
-		free(old_cmd);
+			free(old_cmd);
 		}
 
 	}
 	else
 	{
 		wait(NULL);
+		return (0);
 	}
 
-	return (0);
+		return (0);
 }
