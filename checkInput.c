@@ -18,6 +18,8 @@ void _strcpy(char *dest, char *src)
 		i++;
 	}
 	dest[i] = '\0';
+
+	return (dest);
 }
 /**
  * checkInput - Accepts user input
@@ -42,13 +44,15 @@ int checkInput(char *inputCmd)
 		free(buffer);
 		return (1);
 	}
-	buffer[strcspn(buffer, "\n")] = '\0';
+	buffer = strtok(buffer, "\n");
 	if (buffer[0] != '\0')
 	{
 		_strcpy(inputCmd, buffer);
-		free(buffer);
 		return (0);
 	}
 	else
+	{
+		free(buffer);
 		return (1);
+	}
 }
