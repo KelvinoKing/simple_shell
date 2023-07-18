@@ -17,7 +17,7 @@ char *get_env(char *name)
 	len = _strlen(name);
 	while (environ[i] != NULL)
 	{
-		if (_strcmp(name, environ[i], len) == 0 && environ[i][le] == '=')
+		if (_strncmp(name, environ[i], len) == 0 && environ[i][le] == '=')
 		{
 			return (environ[i] + len + 1);
 		}

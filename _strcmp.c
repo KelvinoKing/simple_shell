@@ -23,6 +23,7 @@ int _strcmp(char *s1, char *s2)
 
 	}
 	for (i = 0; i < count1; i++)
+	{
 		if (s1[i] > s2[i])
 		{
 			diff = s1[i] - s2[i];
@@ -34,7 +35,7 @@ int _strcmp(char *s1, char *s2)
 			break;
 		}
 		else
-		{
+
 			diff = s1[i] - s2[i];
 		}
 	return (diff);
