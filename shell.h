@@ -11,7 +11,7 @@
 void callDir(void);
 int checkInput(char *str);
 int checkForPipes(char *str, char **argv);
-void execute_func(char **argcmd, char **argv);
+void execute_func(char **argcmd, char **argv, char **env);
 int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 int _strncmp(char *s1, char *s2, size_t n);

@@ -34,7 +34,7 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 	i = checkForPipes(cmdString, args);
 		if (i == 1)
 		{
-			execute_func(args, argv);
+			execute_func(args, argv, env);
 		}
 	}
 
