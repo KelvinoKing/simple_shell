@@ -17,21 +17,20 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 	while (1)
 	{
 		callDir();
-
-	if (checkInput(cmdString))
+		if (checkInput(cmdString))
 		continue;
 
-	if (_strcmp(cmdString, "exit") == 0)
-	{
-		exit(0);
-	}
-	if (_strcmp(cmdString, "env") == 0)
-	{
-		print_env(env);
-		continue;
-	}
+		if (_strcmp(cmdString, "exit") == 0)
+		{
+			exit(0);
+		}
+		if (_strcmp(cmdString, "env") == 0)
+		{
+			print_env(env);
+			continue;
+		}
 
-	i = checkForPipes(cmdString, args);
+		i = checkForPipes(cmdString, args);
 		if (i == 1)
 		{
 			execute_func(args, argv, env);
