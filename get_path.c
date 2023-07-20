@@ -6,8 +6,7 @@
  */
 char *get_path(char *cmd)
 {
-	char *path, *path_copy, *token;
-	char *file_path = NULL;
+	char *path, *path_copy, *token, *filepath;
 	struct stat buf;
 	int cmdlen, dirlen = 0;
 
@@ -20,34 +19,31 @@ char *get_path(char *cmd)
 		while (token != NULL)
 		{
 			dirlen = _strlen(token);
-			file_path = malloc(sizeof(char) * (cmdlen + dirlen + 3));
-			if (file_path == NULL)
-			{
+			filepath = malloc(sizeof(char) * (cmdlen + dirlen + 3));
+			if (filepath == NULL)
 				return (NULL);
-			}
 
-		_strcpy(file_path, token);
-		_strcat(file_path, "/");
-		_strcat(file_path, cmd);
-		_strcat(file_path, "\0");
+		_strcpy(filepath, token);
+		_strcat(filepath, "/");
+		_strcat(filepath, cmd);
+		_strcat(filepath, "\0");
 
-		if (stat(file_path, &buf) == 0)
+		if (stat(filepath, &buf) == 0)
 		{
 			free(path_copy);
-			return (file_path);
+			return (filepath);
 		}
 		else
 		{
-			free(file_path);
+			free(filepath);
 			token = strtok(NULL, ":");
 		}
 	}
 	free(path_copy);
 	if (stat(cmd, &buf) == 0)
-	{
 		return (cmd);
+	return (NULL);
 	}
-		return (NULL);
-	}
+
 	return (NULL);
 }
