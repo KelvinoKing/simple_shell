@@ -39,6 +39,7 @@ void execute_func(char **argcmd, char **argv, char **env)
 		else
 		{
 			wait(NULL);
+			free(old_cmd);
 			return;
 		}
 	}
