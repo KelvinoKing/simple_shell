@@ -36,8 +36,5 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 			execute_func(args, argv, env);
 		}
 	}
-
-	free(cmdString);
-	free(args);
 	return (0);
 }

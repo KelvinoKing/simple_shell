@@ -21,8 +21,10 @@ char *get_path(char *cmd)
 			dirlen = _strlen(token);
 			filepath = malloc(sizeof(char) * (cmdlen + dirlen + 3));
 			if (filepath == NULL)
+			{
+				free(path_copy);
 				return (NULL);
-
+			}
 		_strcpy(filepath, token);
 		_strcat(filepath, "/");
 		_strcat(filepath, cmd);
@@ -44,6 +46,5 @@ char *get_path(char *cmd)
 		return (cmd);
 	return (NULL);
 	}
-
 	return (NULL);
 }
