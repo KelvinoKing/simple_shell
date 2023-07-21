@@ -12,10 +12,7 @@
 void execute_func(char **argcmd, char **argv, char **env)
 {
 	pid_t child_pid;
-	char *cmd = NULL, *old_cmd = NULL;
-
-	cmd = argcmd[0];
-	old_cmd = get_path(cmd);
+	char *cmd = argcmd[0], *old_cmd = get_path(cmd);
 
 	if (old_cmd)
 	{
@@ -33,14 +30,14 @@ void execute_func(char **argcmd, char **argv, char **env)
 				perror(argv[0]);
 				exit(0);
 			}
-
-			free(old_cmd);
 		}
 		else
 		{
 			wait(NULL);
-			free(old_cmd);
-			return;
 		}
+	}
+	else
+	{
+		perror(argv[0]);
 	}
 }
