@@ -12,9 +12,6 @@ int checkInput(char *inputCmd)
 	size_t n = 0;
 	ssize_t j;
 
-	buffer = malloc(sizeof(char) * n);
-	if (buffer == NULL)
-		return (1);
 	j = getline(&buffer, &n, stdin);
 	if (j == -1)
 	{

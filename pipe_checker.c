@@ -9,6 +9,8 @@
 int pipe_checker(char *str, char **piped)
 {
 	int j = 0;
+	piped[0] = NULL;
+	piped[1] = NULL;
 
 	piped[j] = strtok(str, "|");
 	while (j < 2)

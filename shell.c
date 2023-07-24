@@ -28,6 +28,5 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 		if (i == 2)
 			continue;
 	}
-	free(argsPiped);
 	return (0);
 }

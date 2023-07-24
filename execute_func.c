@@ -35,7 +35,7 @@ void execute_func(char **argcmd, char **argv, char **env)
 		}
 		else
 		{
-			wait(&child_pid);
+			wait(NULL);
 			if (_strcmp(argcmd[0], old_cmd) != 0)
 			{
 				free(old_cmd);

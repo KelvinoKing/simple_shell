@@ -8,32 +8,17 @@
  */
 char *_strcat(char *dest, char *src)
 {
-	int count = 0, count2 = 0;
-	int j = 0, i = 0;
+	int i= 0, j  = 0;
+	 
+	while (dest[i])
+	i++;
 
-	/* counts the number of characters rep by pointer dest*/
-	while (dest[i] != '\0')
-	{
-		count++;
-		i++;
-	}
-
-	/*counts the number of characters rep by pointer src*/
-	while (src[j] != '\0')
-	{
-		count2++;
-		j++;
-	}
-
-	count2 = count + count2;
-	j = 0;
-
-	/*concatenate the strings*/
-	for (i = count; i < count2; i++)
+	for (j = 0; src[j] != '\0'; j++)
 	{
 		dest[i] = src[j];
-		j++;
+		i++;
 	}
-
+	
+	dest[i] = '\0';
 	return (dest);
 }
