@@ -11,7 +11,7 @@
 int main(__attribute__((unused)) int argc, char **argv,  char **env)
 {
 	char cmdString[1024];
-	char *args[100];
+	char *args[100], *argsPiped[100];
 	int i;
 
 	while (1)
@@ -20,21 +20,16 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 		if (checkInput(cmdString))
 		continue;
 
-		if (_strcmp(cmdString, "exit") == 0)
-		{
-			exit(0);
-		}
-		if (_strcmp(cmdString, "env") == 0)
-		{
-			print_env(env);
-			continue;
-		}
-
-		i = checkForPipes(cmdString, args);
+		i = checkForPipes(cmdString, args, argsPiped, env);
 		if (i == 1)
 		{
 			execute_func(args, argv, env);
 		}
+		if (i == 2)
+			continue;
 	}
+	free(cmdString);
+	free(args);
+	free(argsPiped);
 	return (0);
 }

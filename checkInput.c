@@ -12,19 +12,24 @@ int checkInput(char *inputCmd)
 	size_t n = 0;
 	ssize_t j;
 
+	buffer = malloc(sizeof(char) * n);
+	if (buffer == NULL)
+		return (1);
 	j = getline(&buffer, &n, stdin);
 	if (j == -1)
 	{
+		free(buffer);
 		return (1);
 	}
-	if (buffer != NULL)
+	buffer = strtok(buffer, "\n");
+	if (buffer[0] != '\0')
 	{
-		buffer = strtok(buffer, "\n");
 		_strcpy(inputCmd, buffer);
+		return (0);
 	}
 	else
 	{
+		free(buffer);
 		return (1);
 	}
-	return (0);
 }
