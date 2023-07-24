@@ -1,9 +1,9 @@
 #include "shell.h"
 /**
  * _strcat - concatenate tow strings
- *
  * @dest: first parameter
  * @src: second parameter
+ *
  * Return: A pointer to the resulting string dest
  */
 char *_strcat(char *dest, char *src)

@@ -12,7 +12,10 @@
 void execute_func(char **argcmd, char **argv, char **env)
 {
 	pid_t child_pid;
-	char *cmd = argcmd[0], *old_cmd = get_path(cmd);
+	char *cmd = NULL, *old_cmd = NULL;
+
+	cmd = argcmd[0];
+	old_cmd = get_path(cmd);
 
 	if (old_cmd)
 	{
@@ -22,7 +25,6 @@ void execute_func(char **argcmd, char **argv, char **env)
 			perror(argv[0]);
 			return;
 		}
-
 		if (child_pid == 0)
 		{
 			if (execve(old_cmd, argcmd, env) == -1)
@@ -33,7 +35,12 @@ void execute_func(char **argcmd, char **argv, char **env)
 		}
 		else
 		{
-			wait(NULL);
+			wait(&child_pid);
+			if (_strcmp(argcmd[0], old_cmd) != 0)
+			{
+				free(old_cmd);
+			}
+			return;
 		}
 	}
 	else
@@ -41,4 +48,5 @@ void execute_func(char **argcmd, char **argv, char **env)
 		perror(argv[0]);
 	}
 
+	free(old_cmd);
 }

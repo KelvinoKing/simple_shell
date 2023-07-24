@@ -3,19 +3,30 @@
 /**
  * checkForPipes - checks the user input for pipes
  * @str: command
- * @argv: array to hold commands
+ * @args: array to hold commands
+ * @argsPiped: array to hold piped commands
+ * @env: enviroment variable
  *
  * Return: int
  */
-int checkForPipes(char *str, char **argv)
+int checkForPipes(char *str, char **args, char **argsPiped, char **env)
 {
+	char *piped[2];
 	int i = 0;
 
-	argv[i] = strtok(str, " ");
-	while (argv[i] != NULL)
+	i = pipe_checker(str, piped);
+	if (i)
 	{
-		i++;
-		argv[i] = strtok(NULL, " ");
+		pass_command(piped[0], args);
+		pass_command(piped[1], argsPiped);
 	}
-	return (1);
+	else
+	{
+		pass_command(str, args);
+	}
+
+	if (cmd_default(args, env))
+		return (0);
+	else
+		return (1 + i);
 }
