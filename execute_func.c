@@ -32,12 +32,16 @@ void execute_func(char **argcmd, char **argv, char **env)
 				perror(argv[0]);
 				exit(0);
 			}
-			free(old_cmd);
 		}
 		else
 		{
 			wait(&child_pid);
+			if (_strcmp(argcmd[0], old_cmd) != 0)
+			{
+				free(old_cmd);
+			}
 			return;
 		}
 	}
+	free(old_cmd);
 }

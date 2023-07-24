@@ -25,6 +25,7 @@ int checkInput(char *inputCmd)
 	if (buffer[0] != '\0')
 	{
 		_strcpy(inputCmd, buffer);
+		free(buffer);
 		return (0);
 	}
 	else
