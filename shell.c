@@ -10,23 +10,39 @@
  */
 int main(__attribute__((unused)) int argc, char **argv,  char **env)
 {
-	char cmdString[1024];
-	char *args[100], *argsPiped[100];
-	int i;
+	char str[1024], *args[100], *argsPiped[100], *token;
+	int i, interactiveMode = isatty(STDIN_FILENO);
+	ssize_t bytRead;
 
-	while (1)
+	if (interactiveMode)
 	{
-		callDir();
-		if (checkInput(cmdString))
-		continue;
-
-		i = checkForPipes(cmdString, args, argsPiped, env);
-		if (i == 1)
+		while (1)
 		{
-			execute_func(args, argv, env);
+			callDir();
+			if (checkInput(str))
+				continue;
+
+			i = checkForPipes(str, args, argsPiped, env);
+			if (i == 1)
+			{
+				execute_func(args, argv, env);
+			}
+			if (i == 2)
+				continue;
 		}
-		if (i == 2)
-			continue;
+	}
+	else
+	{
+		while ((bytRead = read(STDIN_FILENO, str, sizeof(str) - 1)) > 0)
+		{
+			str[bytRead] = '\0';
+			token = strtok(str, "\n");
+			while (token != NULL)
+			{
+				execute_command(token, env, argv);
+				token = strtok(NULL, "\n");
+			}
+		}
 	}
 	return (0);
 }

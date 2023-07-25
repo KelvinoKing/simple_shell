@@ -7,7 +7,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <fcntl.h>
 
+void execute_command(char *str, char **env, char **argv);
 void callDir(void);
 int checkInput(char *str);
 int checkForPipes(char *str, char **argv, char **piped, char **env);
