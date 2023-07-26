@@ -7,18 +7,11 @@
  */
 void print_env(char **env)
 {
-	int i;
-	char **ptr = env;
+	int j = 0;
 
-	while (*ptr != NULL)
+	for (j = 0; env[j] != NULL; j++)
 	{
-		i = 0;
-		while ((*ptr)[i] != '\0')
-		{
-			i++;
-		}
-		write(STDOUT_FILENO, *ptr, i);
+		write(STDOUT_FILENO, env[j], _strlen(env[j]));
 		write(STDOUT_FILENO, "\n", 1);
-		ptr++;
 	}
 }
