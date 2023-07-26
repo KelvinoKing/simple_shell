@@ -20,6 +20,7 @@ int pipe_checker(char *str, char **piped);
 void pass_command(char *str, char **args);
 int cmd_default(char **args, char **env);
 void execute_func(char **argcmd, char **argv, char **env);
+char *_strchr(char *str, int ch);
 int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 int _strncmp(char *s1, char *s2, size_t n);
@@ -29,6 +30,6 @@ char *get_env(char *name);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 void print_env(char **env);
-char *_realloc(char * ptr, size_t n);
+char *_realloc(char *ptr, size_t n);
 char *_getline(void);
 #endif /*SHELL_H*/
