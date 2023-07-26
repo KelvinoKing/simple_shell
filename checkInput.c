@@ -13,7 +13,7 @@ int checkInput(char *inputCmd, int bufSize)
 	size_t n = 0;
 	ssize_t j;
 
-	j = getline(&buffer, &n, stdin);
+	j = _getline(&buffer, &n, stdin);
 	if (j == -1)
 	{
 		free(buffer);

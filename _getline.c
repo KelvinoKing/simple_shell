@@ -2,48 +2,47 @@
 
 /**
  * _getline - Reads a line of input from stdin
+ * @lineptr: pointer to pointer of buffer
+ * @n: initial size of buffer
+ * @stream: pipeline in which data flows
+ *
  * Return: pointer to read line or NULL.
  */
 
-char *_getline(void)
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	static char buffer[MAX_INPUT_LEN];
-	static int pos, charsRead;
-	char *line = NULL;
-	int line_len = 0;
-	int buf_size = sizeof(buffer) - 1; /* leave space for null terminator*/
+	size_t bufSize = 128, i = 0;
+	int c;
+	char *newBuf;
 
-	while (1)
+	if (lineptr == NULL || n == NULL || stream == NULL)
+		return (-1);
+	*lineptr = malloc(bufSize);
+	if (*lineptr == NULL)
+		return (-1);
+	while ((c = fgetc(stream)) != EOF)
 	{
-	if (pos >= charsRead)
-	{
-		charsRead = read(STDIN_FILENO, buffer, buf_size);
-		if (charsRead <= 0)
+		if (i >= bufSize - 1)
 		{
-			if (line != NULL)
-			free(line);
-			return (NULL); /* EOF or error in input*/
+			bufSize *= 2;
+			newBuf = _realloc(*lineptr, bufSize);
+			if (newBuf == NULL)
+			{
+				free(*lineptr);
+				return (-1);
+			}
+			*lineptr = newBuf;
 		}
-
-		pos = 0;
+		(*lineptr)[i++] = c;
+		if (c == '\n')
+			break;
 	}
-	/*check for newline character in the buffer*/
-	while (pos < charsRead)
+	(*lineptr)[i] = '\0';
+	if (i == 0 && c == EOF)
 	{
-		if (buffer[pos] == '\n')
-		{
-
-		/* found newline, terminate the line and return it*/
-		buffer[pos] = '\0';
-		pos++;
-		return (line);
-		}
-		pos++;
-		line_len++;
+		free(*lineptr);
+		return (-1);
 	}
-	/* if buffer is full and no newline found extend*/
-		line = _realloc(line, line_len +  buf_size + 1);
-		strncpy(line + line_len, buffer, buf_size);
-		line_len += buf_size;
-	}
+	*n = i + 1;
+	return (i);
 }
