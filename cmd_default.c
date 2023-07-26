@@ -23,7 +23,7 @@ int cmd_default(char **args, char **env)
 	switch (count)
 	{
 		case 1:
-			exit(1);
+			exit(EXIT_SUCCESS);
 			break;
 		case 2:
 			print_env(env);
