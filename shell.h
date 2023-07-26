@@ -9,9 +9,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#define MAX_INPUT_LEN 1024
-
-
 void execute_command(char *str, char **env, char **argv);
 void callDir(void);
 int checkInput(char *str, int bufSize);
