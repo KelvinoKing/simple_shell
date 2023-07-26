@@ -41,6 +41,8 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 				i = checkForPipes(tmpPtr, args, argsPiped, env);
 				if (i == 1)
 					execute_func(args, argv, env);
+				else if (i == 0)
+					fprintf(stderr, "%s: 1: %s: not found\n", argv[0], str);
 				tmpPtr = newline + 1;
 				newline = _strchr(tmpPtr, '\n');
 			}

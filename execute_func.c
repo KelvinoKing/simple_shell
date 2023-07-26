@@ -30,7 +30,7 @@ void execute_func(char **argcmd, char **argv, char **env)
 			if (execve(old_cmd, argcmd, env) == -1)
 			{
 				perror(argv[0]);
-				exit(0);
+				exit(EXIT_FAILURE);
 			}
 		}
 		else
@@ -45,7 +45,7 @@ void execute_func(char **argcmd, char **argv, char **env)
 	}
 	else
 	{
-		perror(argv[0]);
+		fprintf(stderr, "%s: 1: %s: not found\n", argv[0], argcmd[0]);
 	}
 
 	free(old_cmd);
