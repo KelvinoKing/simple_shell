@@ -7,7 +7,7 @@
 
 char *_getline(void)
 {
-	static char buffer[1024];
+	static char buffer[MAX_INPUT_LEN];
 	static int pos, charsRead;
 	char *line = NULL;
 	int line_len = 0;
@@ -24,6 +24,8 @@ char *_getline(void)
 			free(line);
 			return (NULL); /* EOF or error in input*/
 		}
+		
+		pos = 0;
 	}
 	/*check for newline character in the buffer*/
 	while (pos < charsRead)
@@ -36,6 +38,7 @@ char *_getline(void)
 		pos++;
 		return (line);
 		}
+
 		pos++;
 		line_len++;
 	}

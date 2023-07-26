@@ -9,6 +9,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#define MAX_INPUT_LEN 1024
+
+
 void execute_command(char *str, char **env, char **argv);
 void callDir(void);
 int checkInput(char *str);
@@ -27,5 +30,5 @@ char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 void print_env(char **env);
 char *_realloc(char * ptr, size_t n);
-char *_getline(void)
+char *_getline(void);
 #endif /*SHELL_H*/
