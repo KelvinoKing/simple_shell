@@ -30,13 +30,13 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 				execute_func(args, argv, env);
 			}
 			if (i == 2)
-				
+
 			continue;
 		}
 	}
 	else
 	{
-		while((bytRead = read(STDIN_FILENO, str, sizeof(str) - 1)) > 0)
+		while ((bytRead = read(STDIN_FILENO, str, sizeof(str) - 1)) > 0)
 		{
 			str[bytRead] = '\0';
 			token = strtok(str, "\n");

@@ -24,7 +24,7 @@ char *_getline(void)
 			free(line);
 			return (NULL); /* EOF or error in input*/
 		}
-		
+
 		pos = 0;
 	}
 	/*check for newline character in the buffer*/
@@ -38,7 +38,6 @@ char *_getline(void)
 		pos++;
 		return (line);
 		}
-
 		pos++;
 		line_len++;
 	}
@@ -47,5 +46,4 @@ char *_getline(void)
 		strncpy(line + line_len, buffer, buf_size);
 		line_len += buf_size;
 	}
-
 }
