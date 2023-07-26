@@ -5,14 +5,14 @@
  * Return: pointer to read line or NULL.
  */
 
-char *_getlinev(void)
+char *_getline(void)
 {
 	static char buffer[1024];
-	static int pos = 0, charsRead = 0;
+	static int pos, charsRead;
 	char *line = NULL;
 	int line_len = 0;
 	int buf_size = sizeof(buffer) - 1; /* leave space for null terminator*/
-	
+
 	while (1)
 	{
 	if (pos >= charsRead)
@@ -30,7 +30,7 @@ char *_getlinev(void)
 	{
 		if (buffer[pos] == '\n')
 		{
-		
+
 		/* found newline, terminate the line and return it*/
 		buffer[pos] = '\0';
 		pos++;
