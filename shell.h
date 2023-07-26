@@ -26,4 +26,6 @@ char *get_env(char *name);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 void print_env(char **env);
+char *_realloc(char * ptr, size_t n);
+char *_getline(void)
 #endif /*SHELL_H*/

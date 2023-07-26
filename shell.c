@@ -19,7 +19,10 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 		while (1)
 		{
 			callDir();
+		
 			if (checkInput(str))
+				free(str);
+				
 				continue;
 
 			i = checkForPipes(str, args, argsPiped, env);
@@ -28,6 +31,7 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 				execute_func(args, argv, env);
 			}
 			if (i == 2)
+
 				continue;
 		}
 	}

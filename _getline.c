@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * _getline - uses buffer to read many chars at once
+ * _getline - Reads a line of input from stdin
  * Return: pointer to read line or NULL.
  */
 
-char *_getline(void)
+char *_getlinev(void)
 {
 	static char buffer[1024];
 	static int pos = 0, charsRead = 0;
@@ -40,8 +40,8 @@ char *_getline(void)
 		line_len++;
 	}
 	/* if buffer is full and no newline found extend*/
-		line = _realloc(line, line_len, buf_size + 1);
-		strncpy(line +line_len, buffer, buf_size);
+		line = _realloc(line, line_len +  buf_size + 1);
+		strncpy(line + line_len, buffer, buf_size);
 		line_len += buf_size;
 	}
 
