@@ -14,7 +14,7 @@
 
 void execute_command(char *str, char **env, char **argv);
 void callDir(void);
-int checkInput(char *str);
+int checkInput(char *str, int bufSize);
 int checkForPipes(char *str, char **argv, char **piped, char **env);
 int pipe_checker(char *str, char **piped);
 void pass_command(char *str, char **args);

@@ -19,7 +19,7 @@ int main(__attribute__((unused)) int argc, char **argv,  char **env)
 		while (1)
 		{
 			callDir();
-			if (checkInput(str))
+			if (checkInput(str, sizeof(str)))
 				continue;
 			i = checkForPipes(str, args, argsPiped, env);
 			if (i == 1)
